@@ -14,7 +14,6 @@ import {
   Startup,
   MidTier,
   BigCorp
-
 } from "@/assets";
 
 type BoxItem = {
@@ -30,7 +29,6 @@ const images = [
   BigCorp
 ];
 
-
 const Contracts: React.FC = () => {
   const [selectedBox, setSelectedBox] = useState<BoxItem | null>(null);
 
@@ -44,9 +42,7 @@ const Contracts: React.FC = () => {
         "Handle 7000 request per day",
         "Customized private tool setup for the company",
         "Starts from ₹ 3500 / mo",
-
       ],
-
     },
     {
       id: 2,
@@ -70,47 +66,51 @@ const Contracts: React.FC = () => {
         "Starts from ₹ 20000 / mo"
       ]
     },
-
   ];
 
   const borderColors = ['border-red-500', 'border-green-500', 'border-blue-500'];
 
   return (
-    <>
-      <div className="text-white p-4 sm:p-6 md:p-8 flex items-center justify-center">
-        <h2 className='text-4xl'>Coming Soon!</h2>
+    <div className="min-h-screen w-full">
+      <div className="text-white p-4 flex items-center justify-center">
+        <h2 className="text-2xl md:text-4xl">Coming Soon!</h2>
       </div>
-      <div className="p-4 sm:p-6 md:p-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+      
+      <div className="px-2 sm:px-4 md:px-8 py-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
           {boxes.map((box, index) => (
             <motion.div
               key={box.id}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.02 }}
               onClick={() => setSelectedBox(box)}
-              className={`bg-white text-black shadow-md rounded-lg overflow-hidden cursor-pointer flex flex-col items-center justify-center border-2 ${borderColors[index]}`}
+              className={`bg-white text-black shadow-md rounded-lg overflow-hidden cursor-pointer flex flex-col items-center justify-center border-2 ${borderColors[index]} min-w-[280px] mx-auto w-full max-w-sm`}
             >
-              <div className="aspect-w-16 aspect-h-9 mt-4 flex items-center justify-center">
+              <div className="w-full pt-4 px-2 flex items-center justify-center">
                 <Image
                   src={box.image}
                   alt={box.title}
-                  width={200}
-                  height={200}
-                  className="object-cover"
+                  width={160}
+                  height={160}
+                  className="object-contain h-32 w-auto"
                 />
               </div>
-              <div className="p-4 text-center">
-                <h3 className="text-base sm:text-lg font-semibold">{box.title}</h3>
-                <ul className="text-black m-10 list-none text-left">
+              <div className="p-3 sm:p-4 w-full text-center">
+                <h3 className="text-lg font-semibold mb-2">{box.title}</h3>
+                <ul className="text-black mx-2 sm:mx-4 list-none text-left space-y-2">
                   {box.description.map((desc, index) => {
                     const isLast = index === box.description.length - 1;
                     return (
-                      <li key={index} className="mb-1">
+                      <li key={index} className="text-sm sm:text-base">
                         {isLast ? <span className="font-semibold">{desc}</span> : desc}
                       </li>
                     );
                   })}
                 </ul>
-                <Link href="/contactus"><button className="wave-button">Let&apos;s Deal</button></Link>
+                <Link href="/contactus" className="block mt-4">
+                  <button className="wave-button w-full sm:w-auto px-4 py-2">
+                    Let&apos;s Deal
+                  </button>
+                </Link>
               </div>
             </motion.div>
           ))}
@@ -118,7 +118,7 @@ const Contracts: React.FC = () => {
 
         {selectedBox && (
           <Dialog open={!!selectedBox} onOpenChange={() => setSelectedBox(null)}>
-            <DialogContent className="text-black w-[95%] h-[50%] max-w-[425px]">
+            <DialogContent className="text-black w-[90%] max-w-[425px] h-auto max-h-[80vh] overflow-y-auto">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -129,27 +129,23 @@ const Contracts: React.FC = () => {
                   scale: 1.02
                 }}
                 style={{ transformStyle: 'preserve-3d' }}
-                className="bg-white rounded-xl shadow-2xl p-4 sm:p-6"
+                className="bg-white rounded-xl shadow-2xl p-3 sm:p-6"
               >
-
-
-                <div className="aspect-w-16 aspect-h-9 mt-4">
+                <div className="relative w-full aspect-video">
                   <Image
                     src={selectedBox.image}
                     alt={selectedBox.title}
                     fill
-                    className="rounded-lg object-cover"
+                    className="rounded-lg object-contain"
                   />
                 </div>
-
-
               </motion.div>
             </DialogContent>
           </Dialog>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
-export default Contracts
+export default Contracts;
