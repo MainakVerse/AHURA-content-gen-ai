@@ -9,7 +9,7 @@ import { Button } from "@/components/Button";
 const navItems = [
   { href: "/services", title: "Services" },
   { href: "/innovations", title: "Innovations" },
-  { href: "/contracts", title: "Contract" },
+  // { href: "/contracts", title: "Contract" },
   { href: "/contactus", title: "Contact Us" },
 ];
 
