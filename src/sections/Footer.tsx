@@ -16,7 +16,7 @@ export const Footer = () => {
         <div className="flex flex-col lg:flex-row lg:items-center gap-8">
           <div className="flex gap-2 items-center lg:flex-1">
             <Logo className="size-6" />
-            <Link href="https://mainakchaudhuri.netlify.app/" target="_blank"><span className="font-medium">Make @ Supernova</span></Link>
+            <Link href="https://mainakchaudhuri.netlify.app/" target="_blank"><span className="font-medium">Ahura @ Supernova</span></Link>
           </div>
           <nav className="flex flex-col lg:flex-row gap-5 lg:gap-7 lg:flex-1 lg:justify-center">
             {navItems.map((link, index) => (
