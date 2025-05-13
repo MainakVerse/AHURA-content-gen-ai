@@ -190,7 +190,7 @@ const promptTemplates: Record<string, (params: GenerationParams) => string> = {
 // Content generation function
 export const generateContent = async (params: GenerationParams): Promise<string> => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
     // Get the appropriate prompt template or use a default one
     const promptTemplate = promptTemplates[params.toolType] || promptTemplates["Linkedin Post Generation"];
